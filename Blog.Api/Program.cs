@@ -1,3 +1,5 @@
+using Blog.Application.Interface;
+using Blog.Application.services;
 using Blog.DataLayer.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +13,15 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 #region services
 builder.Services.AddDbContext<applicationContext>(options => options.UseNpgsql("Server=127.0.0.1;Port=5432;Database=blogApi;User Id=postgres;Password=229114;"));
+
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
+
+builder.Services.AddTransient<IUser, UserSrivices>();
+builder.Services.AddTransient<IPost, PostServices>();
+builder.Services.AddTransient<IComment, CommentServices>();
+builder.Services.AddTransient<IVote, VoteServices>();
+
 #endregion
 
 

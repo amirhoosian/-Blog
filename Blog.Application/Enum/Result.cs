@@ -1,4 +1,4 @@
-namespace myAspMiniProject.Enum
+﻿namespace Blog.Application.Enum
 {
     public enum Result
     {
